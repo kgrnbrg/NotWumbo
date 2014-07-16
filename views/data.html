@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WUMBO</title>
+ <link rel="stylesheet" type="text/css" href="style.css"/>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+
+ <body>
+
+
+	<div class="screendata">
+
+		<h1>Choose Two Twitter Handles To Wumbo</h1>
+
+			 	<form action ='/' method="post">
+			 	<input id="inputText" type="text" name="user1"></input>
+			 	<input id="inputText" type="text" name="user2"></input>
+				<button id="enter">Enter</button>
+			</form>
+		<hr>
+
+		<h1>Tweets for {{user1.screenName}}</h1>
+
+		<hr>
+
+		{{#user1.userTweets}}
+
+	     <h5>{{tweet}}</h5>
+
+	    {{/user1.userTweets}}
+
+		<hr>
+
+		<h1>Friends of {{user1.screenName}}</h1>
+
+		<hr>
+
+		{{#user1.friends}}
+
+	     <p>
+	     	<img src="{{profile_image_url}}" />
+	     	<strong>Name: {{name}}</strong>, Twitter Handle: {{screen_name}}, Description: {{description}}
+	     </p>
+
+	    {{/user1.friends}}
+
+		<hr>
+		
+		<h1>Followers of {{user1.screenName}}</h1>
+
+		<hr>
+
+		{{#user1.followers}}
+
+	     <p>
+	     	<img src="{{profile_image_url}}" />
+	     	<strong>Name: {{name}}</strong>, Twitter Handle: {{screen_name}}, Description: {{description}}
+	     </p>
+
+	    {{/user1.followers}}
+
+		<hr>
+
+		<h1>Tweets for {{user2.screenName}}</h1>
+
+		<hr>
+
+		{{#user2.userTweets}}
+
+	     <h5>{{tweet}}</h5>
+
+	    {{/user2.userTweets}}
+
+		<hr>
+
+		<h1>Friends of {{user2.screenName}}</h1>
+
+		<hr>
+
+		{{#user2.friends}}
+
+	     <p>
+	     	<img src="{{profile_image_url}}" />
+	     	<strong>Name: {{name}}</strong>, Twitter Handle: {{screen_name}}, Description: {{description}}
+	     </p>
+
+	    {{/user2.friends}}
+
+		<hr>
+		
+		<h1>Followers of {{user2.screenName}}</h1>
+
+		<hr>
+
+		{{#user2.followers}}
+
+	     <p>
+	     	<img src="{{profile_image_url}}" />
+	     	<strong>Name: {{name}}</strong>, Twitter Handle: {{screen_name}}, Description: {{description}}
+	     </p>
+
+	    {{/user2.followers}}
+	</div>
+
+
+ </body>
+ </html>

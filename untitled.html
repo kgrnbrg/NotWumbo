@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <meta charset="utf-8">
+  <title>Maintenance | Learn It Live</title>
+  <meta name="description" content="Learn It Live is currently undergoing routine maintenance.">
+
+  <style>
+        /* background setup */
+        .background {
+            background-repeat:no-repeat;
+            /* custom background-position */
+            background-position:50% 50%;
+            /* ie8- graceful degradation */
+            background-position:50% 50%\9 !important;
+        }
+
+        /* fullscreen setup */
+        html, body {
+            /* give this to all tags from html to .fullscreen */
+            height:100%;
+        }
+        .fullscreen,
+        .content-a {
+            width:100%;
+            min-height:100%;
+        }
+        .not-fullscreen,
+        .not-fullscreen .content-a,
+        .fullscreen.not-overflow,
+        .fullscreen.not-overflow .content-a {
+            height:100%;
+            overflow:hidden;
+        }
+
+        /* content centering styles */
+        .content-a {
+            display:table;
+        }
+        .content-b {
+            display:table-cell;
+            position:relative;
+            vertical-align:middle;
+            text-align:center;
+        }
+
+        /* visual styles */
+        body{
+            margin:0;
+            font-family:sans-serif;
+            font-size:28px;
+            line-height:100px;
+            color:#ffffff;
+            text-align:center;
+        }
+        section {
+            background:#9ed100;
+        }
+        .not-fullscreen {
+            height:50%;
+        }
+  </style>
+</head>
+  
+<body>
+
+    <div class="fullscreen background" style="background-image:url('http://www.minimit.com/images/picjumbo.com_IMG_6648.jpg');" data-img-width="1600" data-img-height="1064">
+        <div class="content-a">
+            <div class="content-b">
+                Centered content
+            </div>
+        </div>
+    </div>
+  
+  
+</body>
+</html>
