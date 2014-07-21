@@ -20,10 +20,10 @@ var app = express();
 // slover setting up ntwitter module
 var twitter = require('ntwitter');
 var twit = new twitter({
-  consumer_key: 'pHMBtrm8FAwTn8JFOnpNuKXhQ',
-  consumer_secret: '3oqag8Y7thKUnYwZNFLZafq4icfjLkkX6qDc6a9jCmzW11Xu3G',
-  access_token_key: '48048511-XaXyMCD1iVU5zqC4uE55PT6Lp0XDSC0KWidi6dOU2',
-  access_token_secret: '7MRphQrUVsb4KAHjfWdFEQscloNhJcPtCh0j7KE9bGJPV'
+  consumer_key: 'Hsp3IDyIEOU5CRbYpCtgHfgeY',
+  consumer_secret: 'sKAImf2gkLlM5b2GntBjXWHBYlsCSjjnqde7CxHIelZ9ORhRdM',
+  access_token_key: '81014526-21ZvRamEPAIqjLDu0DOQGpXJyp87fvlIvVKoCrKwI',
+  access_token_secret: 'q0fIVyzgNTZBCtbVtP6UoeIUyKH0wLruxO53NihrMr8aG'
 });
 
 app.set('port', config.PORT || 3000)
@@ -58,85 +58,125 @@ app.get('/',function(req,res) {
 app.post ('/',function(req,res) {
     console.log("new twitter name requested: " + req.body.user1 + " & " + req.body.user2);
 
-    var twitterData={};
-    var numberOfFunctions = 6; 
-    var counter = 0; 
+    var twitterData={}; // object to hold returned data
+    var numberOfFunctions = 6; //a bit of a hack. the total number of functions with twitter we want to return before rendering data
+    var counter = 0; // when the counter equals the numberOfFunctions, we know we can return
 
-    getTwitterData(req.body.user1,'user1'); 
-    getTwitterData(req.body.user2,'user2'); 
+    // twitterData ={
+    //     user1:{
+    //         screenName: 'the_Greenberg',
+    //         location: 'NYC',
+    //         followerCount: '100000',
+    //         tweet1: 'EVERYDAY IM HUSTLING!!',
+    //         tweet2: 'BOOYA!!'
+    //         friend: 'Snoop Lion',
+    //         friendScreeName : 'snoop_lion',
+    //         trend: '#getitgetit',
+    //     },
+    //     user2:{
+    //         screenName: 'slover_sam',
+    //         location: 'ATL!',
+    //         followerCount: '41231',
+    //         tweet1: 'YOLO!!',
+    //         tweet2: 'YoloAgain!!'
+    //         friend: 'Snoop Lion',
+    //         friendScreeName : 'snoop_lion',
+    //         trend: '#getitgetit',
+    //     }
+    // }
 
-   
+    getTwitterData(req.body.user1,'user1'); // pass in the screenName and the id
+    getTwitterData(req.body.user2,'user2'); // pass in the screenName and the id
+
+    // function that takes in a screename, gets data, and returns the html and data object once it's done
     function getTwitterData(screenName,id){
+
+        // first, create the object inside the object
         twitterData[id] = {};
-        console.log(twitterData);
+
+        //add their screename
         twitterData[id]['screenName'] = screenName;
 
+        //get the location of the user; pass in the screenName, and pull out the location and the follower count from the returned data
+        twit.showUser(screenName,
+            function (err, data) {
+                if (err) {
+                    console.log("error getting showUser. Twitter error >> " + err);
+                }
+                // now add the returned data to the object for that user
+                twitterData[id]['location'] = data[0].location;
+                twitterData[id]['followerCount'] = data[0].followers_count;
+                counter++;
+                returnData(counter); // check to see if we render html yet
+            })
+
+        //get the last 10 tweets of the user and choose a random one; we pass in the screenname as a param
         twit.getUserTimeline({'screen_name':screenName},
                 function (err, userTweets) {
                     if (err) {
-                        console.log("error getting userTweets " + err);
+                        console.log("error getting userTweets. Twitter error >> " + err);
                     }                
-                   
-                    var tweetArray = [];
-                    for (var i = 0;i<userTweets.length;i++){
-                        var tweetObj = {tweet: userTweets[i].text};
-                        tweetArray.push(tweetObj);
+                    //let's pull out a random tweet
+                    // need a random number between 0 and the userTweets.length
+                    var ran = getRanNum(userTweets.length, 0);
+                    var tweet = userTweets[ran].text;
+                    //now, add that tweet to the data object of that user
+                    twitterData[id]['tweet1'] = tweet;
+
+                    //now, get another one, but make sure it's not the same as the first
+                    var ran2 = getRanNum(userTweets.length, 0);
+                    // if the random number is duplicated, get a new one
+                    if (checkForDuplicate(ran,ran2)) ran2 = getRanNum(userTweets.length, 0);
+                    // if the random number is fresh, then add the 2nd tweet
+                    else {
+                        var tweet2 = userTweets[ran2].text;
+                        //now, add that tweet to the data object of that user
+                        twitterData[id]['tweet2'] = tweet2;
                     }
-                   
-                    twitterData[id]['userTweets'] = tweetArray;
-                    console.log(twitterData);
-                    console.log("getting tweets finished for " + screenName);
+
+                    function getRanNum(max,min) {
+                        return Math.floor((Math.random() * max) + min);
+                    }
+
+                    function checkForDuplicate(num1,num2) {
+                        if (num1==num2) return true;
+                        else return false;
+                    }
+
                     counter++;
-                    returnData(counter);
+                    returnData(counter); // check to see if we render html yet
                 })
 
-          
-            twit.getFriendsIds(screenName,
-                function (err, friendsIds) {
-                    if (err) {
-                        console.log("error getting friend IDs " + err);
-                    }
-                    
-                    var friendIdString;
-                    for(var i=0;i<1;i++){
-                        friendIdString += friendsIds[i] +",";
-                    }
-                  
-                    twit.showUser(friendIdString,
-                        function (err, friendObjects) {
-                            
-                            twitterData[id]['friends'] = friendObjects;
-                            console.log(twitterData);
-                            console.log("getting friends finished " + screenName);
-                            counter++;
-                            returnData(counter); 
-                        })
-               });
+        // function to get all their friends and then pick one at random; takes a screen name, and we are ultimately getting their screen name and real name
+        twit.getFriendsIds(screenName,
+            function (err, friendIds) {
+                if (err) {
+                    console.log("error getting friend IDs. Twitter error >>  " + err);
+                }
 
-           
-            twit.getFollowersIds(screenName,
-                function (err, followerIds) {
-                    if (err) {
-                        console.log("error getting follower IDs " + err);
-                    }
-                  
-                    var followerIdString;
-                    for(var i=0;i<1;i++){
-                        followerIdString += followerIds[i] +",";
-                    }
+                //let's pull out a random friend
+                //need a random number between 0 and the friendIds.length
+                var ran = Math.floor((Math.random() * friendIds.length) + 0);
+                var ranFriend = friendIds[ran];
 
-                    
-                    twit.showUser(followerIdString,
-                        function (err, followerData) {
-                          
-                            twitterData[id]['followers'] = followerData;
-                            console.log(twitterData);
-                            console.log("getting followers finished " + screenName);
-                            counter++;
-                            returnData(counter); 
-                        })
-                });
-        }
+                // we are getting more information about these people
+                twit.showUser(ranFriend,
+                    function (err, data) {
+                        // now add the returned friend to the object
+                        twitterData[id]['friend'] = data[0].name;
+                        twitterData[id]['friendScreenName'] = data[0].screen_name;
+                        counter++;
+                        returnData(counter); // check to see if we render html yet
+                    })
+            })
+
+        // twit.getTrendsNew(function (err, data) {
+        //         if (err) {
+        //             console.log("error getting trends. Twitter error >>  " + err);
+        //         }               
+        //         console.log(data);
+        //   })        
+    }
 
         // pass in the current count number and render data if it's ready
         function returnData(counter){

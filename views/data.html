@@ -4,102 +4,59 @@
 <title>WUMBO</title>
  <link rel="stylesheet" type="text/css" href="style.css"/>
  <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-
+<style>
+body {
+		background-color: #ff9933;
+	}
+	</style>
  <body>
 
 
 	<div class="screendata">
 
-		<h1>Choose Two Twitter Handles To Wumbo</h1>
+		<h1>Your Wumbo</h1>
+		<h2>Enter Two New Handles to Wumbo again</h2>
 
 			 	<form action ='/' method="post">
-			 	<input id="inputText" type="text" name="user1"></input>
-			 	<input id="inputText" type="text" name="user2"></input>
-				<button id="enter">Enter</button>
-			</form>
+				 	<input id="inputText" type="text" name="user1" required></input>
+				 	<input id="inputText" type="text" name="user2" required></input>
+					<button id="enter">Enter</button>
+				</form>
+			 <!-- 	<form action ='/' method="post" visibility="hidden">
+				 	<input id="inputText" type="text" name="user1" value='{{{user1.screeName}}}' required></input>
+				 	<input id="inputText" type="text" name="user2" value='{{{user2.screeName}}}' required></input>
+					<button id="enter">Enter</button>
+				</form>				 -->
 		<hr>
+	
+		<p>
 
-		<h1>Tweets for {{user1.screenName}}</h1>
-
-		<hr>
-
-		{{#user1.userTweets}}
-
-	     <h5>{{tweet}}</h5>
-
-	    {{/user1.userTweets}}
-
-		<hr>
-
-		<h1>Friends of {{user1.screenName}}</h1>
-
-		<hr>
-
-		{{#user1.friends}}
-
-	     <p>
-	     	<img src="{{profile_image_url}}" />
-	     	<strong>Name: {{name}}</strong>, Twitter Handle: {{screen_name}}, Description: {{description}}
-	     </p>
-
-	    {{/user1.friends}}
-
-		<hr>
-		
-		<h1>Followers of {{user1.screenName}}</h1>
+			In the largest debate since <font color="red">{{user1.tweet1}}</font>, <font color="blue">{{user2.screenName}}</font> was denied <font color="green">#Thor</font> by the supreme <font color="blue">{{user1.screenName}}</font> based on <font color="red">{{user2.tweet1}}</font>. Viewers were outraged, but according to <font color="blue">{{user1.friend}}</font>, arguing at <font color="green">{{user2.location}}</font> means <font color="red">{{user1.tweet2}}</font>. There's <font color="green">{{user1.followerCount}}</font> sides to story, but that day they all learned <font color="red">{{user2.tweet2}}</font>.
+		</p>
+		<h1>Screen Names</h1>
+		<h5>We have data for {{user1.screenName}} and {{user2.screenName}}!</h1>
 
 		<hr>
 
-		{{#user1.followers}}
+		<h1>Some Data</h1>
+	     <h5>{{user1.screenName}}'s location is {{user1.location}} and their follower count is {{user1.followerCount}}</h5>
+	     <h5>{{user2.screenName}}'s location is {{user2.location}} and their follower count is {{user2.followerCount}}</h5>
+		<hr>
+ 
+		<h1>Tweets</h1>
+	     <h5>The tweet1 for {{user1.screenName}}! >> {{user1.tweet1}}</h5>
+	     <h5>The tweet1 for {{user2.screenName}}! >> {{user2.tweet1}}</h5>
 
-	     <p>
-	     	<img src="{{profile_image_url}}" />
-	     	<strong>Name: {{name}}</strong>, Twitter Handle: {{screen_name}}, Description: {{description}}
-	     </p>
-
-	    {{/user1.followers}}
-
+	     <h5>The tweet2 for {{user1.screenName}}! >> {{user1.tweet2}}</h5>
+	     <h5>The tweet2 for {{user2.screenName}}! >> {{user2.tweet2}}</h5>
 		<hr>
 
-		<h1>Tweets for {{user2.screenName}}</h1>
+		<h1>Friends</h1>
+	     <h5>{{user1.screenName}}'s friend is {{user1.friend}}, who has a screen name of {{user1.friendScreenName}}</h5>
+	     <h5>{{user2.screenName}}'s friend is {{user2.friend}}, who has a screen name of {{user2.friendScreenName}}</h5>
 
-		<hr>
+		<hr>		
 
-		{{#user2.userTweets}}
-
-	     <h5>{{tweet}}</h5>
-
-	    {{/user2.userTweets}}
-
-		<hr>
-
-		<h1>Friends of {{user2.screenName}}</h1>
-
-		<hr>
-
-		{{#user2.friends}}
-
-	     <p>
-	     	<img src="{{profile_image_url}}" />
-	     	<strong>Name: {{name}}</strong>, Twitter Handle: {{screen_name}}, Description: {{description}}
-	     </p>
-
-	    {{/user2.friends}}
-
-		<hr>
-		
-		<h1>Followers of {{user2.screenName}}</h1>
-
-		<hr>
-
-		{{#user2.followers}}
-
-	     <p>
-	     	<img src="{{profile_image_url}}" />
-	     	<strong>Name: {{name}}</strong>, Twitter Handle: {{screen_name}}, Description: {{description}}
-	     </p>
-
-	    {{/user2.followers}}
 	</div>
 
 

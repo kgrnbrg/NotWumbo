@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WUMBO</title>
+ <link rel="stylesheet" type="text/css" href="style.css"/>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<style>
+body {
+		background-color: #ff9933;
+	}
+	</style>
+ <body>
+
+
+	<div class="screendata">
+
+		<h1>Your Wumbo</h1>
+		<h2>Enter Two New Handles to Wumbo again</h2>
+
+			 	<form action ='/' method="post">
+				 	<input id="inputText" type="text" name="user1" required></input>
+				 	<input id="inputText" type="text" name="user2" required></input>
+					<button id="enter">Enter</button>
+				</form>
+		<hr>
+	
+		<p>
+			After four trips to The Finals and two rings in Miami, it was time for King <b>{{user1.screenName}}</b> to return home. A new chapter would unfold alongside <b>{{user2.screenName}}</b> and <b>{{user1.friend}}</b>. Numbers once burned were now <b>{{user1.tweet1}}</b>. In a time when <b>{{user2.tweet1}}</b>ruled the <b>#theview</b> world, it was refreshing to see <b>{{user1.tweet2}}</b>. 
+
+		</p>
+		<h1>Screen Names</h1>
+		<h5>We have data for {{user1.screenName}} and {{user2.screenName}}!</h1>
+
+		<hr>
+
+		<h1>Some Data</h1>
+	     <h5>{{user1.screenName}}'s location is {{user1.location}} and their follower count is {{user1.followerCount}}</h5>
+	     <h5>{{user2.screenName}}'s location is {{user2.location}} and their follower count is {{user2.followerCount}}</h5>
+		<hr>
+ 
+		<h1>Tweets</h1>
+	     <h5>The tweet1 for {{user1.screenName}}! >> {{user1.tweet1}}</h5>
+	     <h5>The tweet1 for {{user2.screenName}}! >> {{user2.tweet1}}</h5>
+
+	     <h5>The tweet2 for {{user1.screenName}}! >> {{user1.tweet2}}</h5>
+	     <h5>The tweet2 for {{user2.screenName}}! >> {{user2.tweet2}}</h5>
+		<hr>
+
+		<h1>Friends</h1>
+	     <h5>{{user1.screenName}}'s friend is {{user1.friend}}, who has a screen name of {{user1.friendScreenName}}</h5>
+	     <h5>{{user2.screenName}}'s friend is {{user2.friend}}, who has a screen name of {{user2.friendScreenName}}</h5>
+
+		<hr>		
+
+	</div>
+
+
+ </body>
+ </html>
