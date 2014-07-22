@@ -17,21 +17,22 @@ body {
 		<h1>Your Wumbo</h1>
 		<h2>Enter Two New Handles to Wumbo again</h2>
 
-			 	<form action ='/' method="post">
+			 	<form action ='/wumbo' method="post">
 				 	<input id="inputText" type="text" name="user1" required></input>
 				 	<input id="inputText" type="text" name="user2" required></input>
-					<button id="enter">Enter</button>
+					<button id="enter">Wumbo again</button>
 				</form>
-			 <!-- 	<form action ='/' method="post" visibility="hidden">
+			
+			<form action ='/wumbo' method="post" visibility="hidden">
 				 	<input id="inputText" type="text" name="user1" value='{{{user1.screeName}}}' required></input>
 				 	<input id="inputText" type="text" name="user2" value='{{{user2.screeName}}}' required></input>
-					<button id="enter">Enter</button>
-				</form>				 -->
+					<button id="enter">ReWumbo</button>
+				</form>				
 		<hr>
 	
 		<p>
 
-			In the largest debate since <font color="red">{{user1.tweet1}}</font>, <font color="blue">{{user2.screenName}}</font> was denied <font color="green">#Thor</font> by the supreme <font color="blue">{{user1.screenName}}</font> based on <font color="red">{{user2.tweet1}}</font>. Viewers were outraged, but according to <font color="blue">{{user1.friend}}</font>, arguing at <font color="green">{{user2.location}}</font> means <font color="red">{{user1.tweet2}}</font>. There's <font color="green">{{user1.followerCount}}</font> sides to story, but that day they all learned <font color="red">{{user2.tweet2}}</font>.
+			In the largest debate since <b>{{user1.tweet1}}</b>, <b>{{user2.screenName}}</b> was denied <b>#Thor</b> by the supreme <b>{{user1.screenName}}</b> based on <b>{{user2.tweet1}}</b>. Viewers were outraged, but according to <b>{{user1.friend}}</b>, arguing at <b>{{user2.location}}</b> means <b>{{user1.tweet2}}</b>. There's <b>{{user1.followerCount}}</b> sides to story, but that day they all learned <b>{{user2.tweet2}}</b>.
 		</p>
 		<h1>Screen Names</h1>
 		<h5>We have data for {{user1.screenName}} and {{user2.screenName}}!</h1>

@@ -17,7 +17,6 @@ var sys = require('util');
 var oauth = require('oauth');
 var app = express();
 
-// slover setting up ntwitter module
 var twitter = require('ntwitter');
 var twit = new twitter({
   consumer_key: 'Hsp3IDyIEOU5CRbYpCtgHfgeY',
@@ -27,6 +26,7 @@ var twit = new twitter({
 });
 
 app.set('port', config.PORT || 3000)
+console.log("Commence");
 app.set('views', __dirname + '/views');
 app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');
@@ -55,7 +55,17 @@ app.get('/',function(req,res) {
     res.render('index.html');
 });
 
-app.post ('/',function(req,res) {
+app.get ('/start',function(req,res){
+    console.log("stage two");
+    res.render('input.html');
+});
+
+app.get ('/narrative',function(req,res){
+    console.log("narrative");
+    res.render('WumbNarr.html');
+});
+
+app.post ('/wumbo',function(req,res) {
     console.log("new twitter name requested: " + req.body.user1 + " & " + req.body.user2);
 
     var twitterData={}; // object to hold returned data
