@@ -65,6 +65,23 @@ app.get ('/narrative',function(req,res){
     res.render('WumbNarr.html');
 });
 
+app.get ('/movies',function(req,res){
+    console.log("movie");
+    res.render('movies.html');
+});
+app.get ('/vg',function(req,res){
+    console.log("vg");
+    res.render('videogames.html');
+});
+app.get ('/sports',function(req,res){
+    console.log("sports");
+    res.render('sports.html');
+});
+app.get ('/justice',function(req,res){
+    console.log("justice");
+    res.render('data.html');
+});
+
 app.post ('/wumbo',function(req,res) {
     console.log("new twitter name requested: " + req.body.user1 + " & " + req.body.user2);
 
