@@ -26,6 +26,7 @@ var app = express();
 // all environments
   app.set('port', config.PORT || 3000);
   app.set('views', __dirname + '/views');
+  app.use(express.static(__dirname + '/public'));
   app.engine('html', require('hogan-express'));
   app.set('view engine', 'html');
   //app.use(express.favicon());
@@ -232,6 +233,7 @@ app.post ('/wumbo',function(req,res) {
                         else return false;
                     }
 
+                 
                     counter++;
                     returnData(counter); // check to see if we render html yet
                 })
