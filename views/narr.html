@@ -1,4 +1,27 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<title>WUMBO</title>
+ <link rel="stylesheet" type="text/css" href="style.css"/>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+ <body>
 
+<style>
+body {
+		background-color: #f4d451;
+	}
+	</style>
+	<form action ='/narrative' method="post">
+		<h1>Choose a theme for your Wumbo!</h1>
+		<a href='/justice'><img src="wumblogo.jpg"></a>
+		<a href='/movies'><img src="wumblogo.jpg"></a>
+		<a href='/vg'><img src="wumblogo.jpg"></a>
+		<a href='/sports'><img src="wumblogo.jpg"></a>
+
+ </body>
+ </html>
+
+  -->
  <!DOCTYPE html>
 <html>
   <head>
@@ -8,7 +31,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <title>Wumbo</title>
 
     <!-- Bootstrap core CSS -->
@@ -31,11 +57,7 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <!-- <h3 class="masthead-brand">WUMBO</h3> -->
-              <!-- ul class="nav masthead-nav">
-                <li class="active"><a href="/index.html">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li> -->
+         
               </ul>
             </div>
           </div>
@@ -45,21 +67,34 @@ body {
 	}
 	</style>
           <div class="inner cover">
-          	<img src="/images/3.png" alt="logo">
-	<div class="screendata">
-		<h1>Choose two Twitter handles your WUMBO will focus on</h1>
-		<h2>(You don't need to put @ for the handle 
-			i.e @DukeWumbo --> DukeWumbo)</h2>
-
-			 	<form action ='/wumbo' method="post">
-			 	<input id="inputText" type="text" name="user1"></input>
-			 	<img src="/images/4+.png" alt="logo">
-			 	<input id="inputText" type="text" name="user2"></input>
-				<button id="enter">Next</button>
-			</form>
-		<hr>
+<script> 
+$(function() {
+$( "#accordion" ).accordion({
+collapsible: true
+});
+});
+</script>
+</head>
+<body>
+<img src="/images/3.png" alt="logo">
+<div class="screendata">
+<h1>Choose a theme your story will bring life</h1>
+<div id="accordion">
+   <h3>Sports</h3>
+   <div><p>
+    NBA Finals
+   </p></div>
+   <h3>Movies</h3>
+   <div><p>
+    Indiana Jones
+   </p></div>
+   <h3>Videogames</h3>
+   <div><p>
+    Super Mario Brothers
+   </p></div>
+   <h3>Justice</h3> 
+</div>		 	
 	</div>
-            </p>
           </div>
 
         </div>

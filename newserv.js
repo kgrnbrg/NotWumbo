@@ -125,7 +125,7 @@ app.get ('/start',function(req,res){
 
 app.get ('/narrative',function(req,res){
     console.log("narrative");
-    res.render('WumbNarr.html');
+    res.render('narr.html');
 });
 
 app.get ('/movies',function(req,res){
