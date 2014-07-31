@@ -1,0 +1,221 @@
+* {
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+}
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+body { 
+
+  font-family:'Lato';
+}
+h1 {
+  font-size:2em;
+  padding:2em;
+  text-align:center;
+}
+.accordion {
+    dl {
+        border:1px solid #ddd;
+         &:after {
+            content: "";
+            display:block;
+            height:1em;
+            width:100%;
+            background-color:darken(#38cc70, 10%);
+        }
+    }
+    dt {
+        >a {
+          text-align:center;
+         
+          font-weight:700; 
+          padding:2em;
+          display:block;
+          text-decoration:none;
+          color:#fff;
+          -webkit-transition:background-color 0.5s ease-in-out;
+          
+        }
+      }
+    dd {
+        background-color:#eee;
+        font-size:1em;
+        line-height:1.5em;
+        >p {
+          padding:1em 2em 1em 2em;
+        }
+    }
+}
+.accordion {
+    position:relative;
+    background-color:#eee;
+}
+.container {
+  max-width:960px;
+  margin:0 auto;
+  padding:2em 0 2em 0;
+}
+.accordionTitle {
+ background-color:#38cc70; 
+  border-bottom:1px solid darken(#38cc70, 5%);
+  &:before {
+   content: "+";
+
+   font-size:1.5em;
+   line-height:0.5em;
+   float:left; 
+   @include transition(transform 0.3s ease-in-out);
+  }
+  &:hover {
+    background-color:darken(#38cc70, 10%);
+  }
+}
+.accordionTitleActive {
+   background-color:darken(#38cc70, 10%);
+    &:before {
+       -webkit-transform:rotate(-225deg);
+      -moz-transform:rotate(-225deg);
+      transform:rotate(-225deg);
+    }
+}
+.accordionItem {
+    height:auto;
+    overflow:hidden; 
+    //SHAME: magic number to allow the accordion to animate
+    @media all {
+        max-height:50em;
+        @include transition(max-height 1s);
+    }
+    @media screen and (min-width:48em) {
+         max-height:15em;
+         @include transition(max-height 0.5s);
+    }
+    
+   
+}
+.accordionItemCollapsed {
+    max-height:0;
+}
+.animateIn {
+     -webkit-animation-name: accordionIn;
+     -webkit-animation-duration: 0.65s;
+     -webkit-animation-iteration-count: 1;
+     -webkit-animation-direction: normal;
+     -webkit-animation-timing-function: ease-in-out;
+     -webkit-animation-fill-mode: both;
+     -webkit-animation-delay: 0s;
+     -moz-animation-name: normal;
+     -moz-animation-duration: 0.65s;
+     -moz-animation-iteration-count: 1;
+     -moz-animation-direction: alternate;
+     -moz-animation-timing-function: ease-in-out;
+     -moz-animation-fill-mode: both;
+     -moz-animation-delay: 0s;
+     animation-name: accordionIn;
+     animation-duration: 0.65s;
+     animation-iteration-count: 1;
+     animation-direction: normal;
+     animation-timing-function: ease-in-out;
+     animation-fill-mode: both;
+     animation-delay: 0s;
+    
+}
+.animateOut {
+    -webkit-animation-name: accordionOut;
+     -webkit-animation-duration: 0.75s;
+     -webkit-animation-iteration-count: 1;
+     -webkit-animation-direction: alternate;
+     -webkit-animation-timing-function: ease-in-out;
+     -webkit-animation-fill-mode:  both;
+     -webkit-animation-delay: 0s;
+     -moz-animation-name: accordionOut;
+     -moz-animation-duration: 0.75s;
+     -moz-animation-iteration-count: 1;
+     -moz-animation-direction: alternate;
+     -moz-animation-timing-function: ease-in-out;
+     -moz-animation-fill-mode:  both;
+     -moz-animation-delay: 0s;
+     animation-name: accordionOut;
+     animation-duration: 0.75s;
+     animation-iteration-count: 1;
+     animation-direction: alternate;
+     animation-timing-function: ease-in-out;
+     animation-fill-mode: both;
+     animation-delay: 0s;
+}
+
+@-webkit-keyframes accordionIn {
+         0% {
+                opacity: 0;
+                -webkit-transform:scale(0.8);
+               
+        }
+
+       100% {
+                opacity:1;
+                -webkit-transform:scale(1);
+       }
+}
+
+@-moz-keyframes accordionIn {
+        0% {
+                opacity: 0;
+                -moz-transform:scale(0.8);
+               
+        }
+
+       100% {
+                opacity:1;
+                -moz-transform:scale(1);
+       }
+}
+
+@keyframes accordionIn {
+        0% {
+               opacity: 0;
+               transform:scale(0.8);
+        }
+
+       100% {
+                opacity:1;
+                transform:scale(1);
+       }
+}
+@-webkit-keyframes accordionOut {
+         0% {
+                opacity: 1;
+                -webkit-transform:scale(1);
+               
+        }
+
+       100% {
+                opacity:0;
+                -webkit-transform:scale(0.8);
+       }
+}
+
+@-moz-keyframes accordionOut {
+        0% {
+                opacity: 1;
+                -moz-transform:scale(1);
+               
+        }
+
+       100% {
+                opacity:0;
+                -moz-transform:scale(0.8);
+       }
+}
+
+@keyframes accordionOut {
+        0% {
+                opacity: 1;
+                transform:scale(1);
+               
+        }
+
+       100% {
+                opacity:0;
+                transform:scale(0.8);
+       }
+}

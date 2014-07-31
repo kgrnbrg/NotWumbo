@@ -127,6 +127,10 @@ app.get ('/narrative',function(req,res){
     console.log("narrative");
     res.render('narr.html');
 });
+app.get ('/wumbarrative',function(req,res){
+    console.log("wumbarrative");
+    res.render('acc.html');
+});
 
 app.get ('/movies',function(req,res){
     console.log("movie");
