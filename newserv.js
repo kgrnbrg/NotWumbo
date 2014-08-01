@@ -129,7 +129,7 @@ app.get ('/narrative',function(req,res){
 });
 app.get ('/wumbarrative',function(req,res){
     console.log("wumbarrative");
-    res.render('acc.html');
+    res.render('anarr.html');
 });
 
 app.get ('/movies',function(req,res){
