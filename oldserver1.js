@@ -1,126 +1,68 @@
-var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
+//Call Express modules
+var express = require('express'),
+    routes = require('./routes'),
+    user = require('./routes/user'),
+    http = require('http'),
+    path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
     errorhandler = require('errorhandler'),
-    jade = require('jade'),
-    path = require('path');
- 
+    jade = require('jade');
+
 var config = require('./config.js');
-console.log(config.PORT);
-var twitter = require('ntwitter');
 var sys = require('util');
 var oauth = require('oauth');
+var app = express();
+
+var twitter = require('ntwitter');
 var twit = new twitter({
   consumer_key: 'Ya3bYM1H0DEa7ywx22Qx2QlHH',
-  consumer_secret: 'Z0r2jInI8i6B6f6VudgcLYbFJyEiBb9qG7h4IEOAqtPwQcPKHJ'
+  consumer_secret: 'Z0r2jInI8i6B6f6VudgcLYbFJyEiBb9qG7h4IEOAqtPwQcPKHJ',
+  access_token_key: '2645854584-7BKWD1xPxrojx3SV7aIbxNuAMoB67HU44GCBnGx',
+  access_token_secret: '7ZPuOEHJdce75QMNrlQKZnDkZvZtcrP731tLYyqFmeCEj'
 });
- 
-var app = express();
- 
-// all environments
-  app.set('port', config.PORT || 3000);
-  app.set('views', __dirname + '/views');
-  app.use(express.static(__dirname + '/public'));
-  app.engine('html', require('hogan-express'));
-  app.set('view engine', 'html');
-  //app.use(express.favicon());
-  //app.use(express.logger('dev'));
-  app.use(bodyParser());
-  app.use(methodOverride());
-  app.use(cookieParser());
-  app.use(session({  secret: config.EXPRESS_SESSION_SECRET }));
-  app.use(function(req, res, next){
-      res.locals.user = req.session.user;
-      next();
-    });
-  //app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
-  app.use(require('stylus').middleware(__dirname + '/public'));
-  app.use(errorhandler({ dumpExceptions: true, showStack: true }));
- 
- 
-app.get('/', function(req, res){
-  console.log("main route requested");
-  res.render('index.html')
+
+app.set('port', config.PORT || 3000)
+console.log("Commence");
+app.set('views', __dirname + '/views');
+app.engine('html', require('hogan-express'));
+app.set('view engine', 'html');
+app.use(morgan());
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(cookieParser());
+app.use(session({
+    secret: config.EXPRESS_SESSION_SECRET
+}));
+app.use(function (req, res, next) {
+    res.locals.user = req.session.user;
+    next();
 });
- 
- 
-var _twitterConsumerKey = config.TWITTER_CONSUMER_KEY;
-var _twitterConsumerSecret = config.TWITTER_CONSUMER_SECRET;
-console.log("_twitterConsumerKey: %s and _twitterConsumerSecret %s", _twitterConsumerKey, _twitterConsumerSecret);
- 
-function consumer() {
-  return new oauth.OAuth(
-    'https://api.twitter.com/oauth/request_token', 
-    'https://api.twitter.com/oauth/access_token', 
-     _twitterConsumerKey, 
-     _twitterConsumerSecret, 
-     "1.0A", 
-     config.HOSTPATH+':'+ config.PORT+ '/sessions/callback', 
-     "HMAC-SHA1"
-   );
-}
- 
-app.get('/sessions/connect', function(req, res){
-  consumer().getOAuthRequestToken(function(error, oauthToken, oauthTokenSecret, results){ //callback with request token
-    if (error) {
-      res.send("Error getting OAuth request token : " + sys.inspect(error), 500);
-    } else { 
-      sys.puts("results>>"+sys.inspect(results));
-      sys.puts("oauthToken>>"+oauthToken);
-      sys.puts("oauthTokenSecret>>"+oauthTokenSecret);
- 
-      req.session.oauthRequestToken = oauthToken;
-      req.session.oauthRequestTokenSecret = oauthTokenSecret;
-      res.redirect("https://api.twitter.com/oauth/authorize?oauth_token="+req.session.oauthRequestToken);    
-    }
-  });
-});
- 
- 
-app.get('/sessions/callback', function(req, res){
-  sys.puts("oauthRequestToken>>"+req.session.oauthRequestToken);
-  sys.puts("oauthRequestTokenSecret>>"+req.session.oauthRequestTokenSecret);
-  sys.puts("oauth_verifier>>"+req.query.oauth_verifier);
-  consumer().getOAuthAccessToken(
-    req.session.oauthRequestToken, 
-    req.session.oauthRequestTokenSecret, 
-    req.query.oauth_verifier, 
-    function(error, oauthAccessToken, oauthAccessTokenSecret, results) { //callback when access_token is ready
-    if (error) {
-      res.send("Error getting OAuth access token : " + sys.inspect(error), 500);
-    } else {
-      twit.access_token_key = oauthAccessToken;
-      twit.access_token_secret=oauthAccessTokenSecret;
-      req.session.oauthAccessToken = oauthAccessToken;
-     req.session.oauthAccessTokenSecret = oauthAccessTokenSecret;
-      consumer().get("https://api.twitter.com/1.1/account/verify_credentials.json", 
-                      req.session.oauthAccessToken, 
-                      req.session.oauthAccessTokenSecret, 
-                      function (error, data, response) {  //callback when the data is ready
-        if (error) {
-          res.send("Error getting twitter screen name : " + sys.inspect(error), 500);
-        } else {
-          data = JSON.parse(data);
-          req.session.twitterScreenName = data["screen_name"];  
-          res.render("input.html")
-          //req.session.twitterLocaltion = data["location"];  
-          //res.send('You are signed in with Twitter screenName ' + req.session.twitterScreenName + ' and twitter thinks you are in '+ req.session.twitterLocaltion)
-        }  
-      });  
-    }
-  });
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('stylus').middleware(__dirname + '/public'));
+app.use(errorhandler({
+    dumpExceptions: true,
+    showStack: true
+}));
+
+app.get('/',function(req,res) {
+    console.log("main route requested");
+
+    // just render an HTML page initially, that's it
+    res.render('index.html');
 });
 
 app.get ('/start',function(req,res){
     console.log("stage two");
     res.render('input.html');
+});
+
+app.get ('/narrative',function(req,res){
+    console.log("narrative");
+    res.render('WumbNarr.html');
 });
 
 app.get ('/movies',function(req,res){
@@ -140,16 +82,9 @@ app.get ('/justice',function(req,res){
     res.render('data.html');
 });
 
-app.get ('/anarr',function(req,res){
-    console.log("justice");
-    res.render('anarr.html');
-});
-
 app.post ('/wumbo',function(req,res) {
-    console.log("new twitter handles requested: " + req.body.user1 + " & " + req.body.user2);
-    console.log("the narrative they want is " + req.body.narrative);
+    console.log("new twitter name requested: " + req.body.user1 + " & " + req.body.user2);
 
-    var narrative = req.body.narrative;
     var twitterData={}; // object to hold returned data
     var numberOfFunctions = 6; //a bit of a hack. the total number of functions with twitter we want to return before rendering data
     var counter = 0; // when the counter equals the numberOfFunctions, we know we can return
@@ -235,7 +170,6 @@ app.post ('/wumbo',function(req,res) {
                         else return false;
                     }
 
-                 
                     counter++;
                     returnData(counter); // check to see if we render html yet
                 })
@@ -275,14 +209,7 @@ app.post ('/wumbo',function(req,res) {
         function returnData(counter){
             if (counter == numberOfFunctions){
                 console.log("we have all the data we need! rendering html!");
-
-                // render the HTML based on the narrative
-                if (req.body.narrative == "sports") res.render('sports.html',twitterData);
-                else if (req.body.narrative == "movies") res.render('movies.html',twitterData);
-                else if (req.body.narrative == "games") res.render('videogames.html',twitterData);
-                else if (req.body.narrative == "justice") res.render('data.html',twitterData);
-                else if (req.body.narrative == "sponsored") res.render('data.html',twitterData); 
-                else res.render('data.html',twitterData);    
+                res.render('data.html',twitterData);   
             }
             else {
                 console.log("not all functions have returned yet; waiting still...");
@@ -291,6 +218,4 @@ app.post ('/wumbo',function(req,res) {
         }
 });
 
- 
- 
 app.listen(parseInt(config.PORT || 3000));
