@@ -6,7 +6,7 @@
 a,
 a:focus,
 a:hover {
-  color: #f4d451;
+  color: #fff;
 }
 
 /* Custom default button */
@@ -15,8 +15,8 @@ a:hover {
 .btn-default:focus {
   color: #333;
   text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #f4d451;
-  border: 1px solid #f4d451;
+  background-color: #fff;
+  border: 1px solid #fff;
 }
 
 
@@ -27,10 +27,10 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #f4d451;
+  background-color: #333;
 }
 body {
-  color: #f4d451;
+  /*color: #fff;*/
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
@@ -78,7 +78,7 @@ body {
   padding-left: 0;
   font-size: 16px;
   font-weight: bold;
-  color: #f4d451; /* IE8 proofing */
+  /*color: #fff;*/ /* IE8 proofing */
   color: rgba(255,255,255,.75);
   border-bottom: 2px solid transparent;
 }
@@ -91,9 +91,9 @@ body {
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #f4d451;
-  border-bottom-color: #f4d451;
-}
+  /*color: #fff;
+  border-bottom-color: #fff;
+*/}
 
 @media (min-width: 768px) {
   .masthead-brand {

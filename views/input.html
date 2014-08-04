@@ -2,11 +2,14 @@
  <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+   <meta charset='utf-8'>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/css/acstyles.css">
+   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+   <script src="/js/acscript.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/cover.css" rel="stylesheet"> 
     <link rel="icon" href="../../favicon.ico">
 
     <title>Wumbo</title>
@@ -21,10 +24,57 @@
 
   </head>
 
+<style>
+  html,
+  body {
+      width: 100%;
+      height: 100%;
+  }
+    body {
+        background-color: #f4d451;    
+      }
+
+    #submitPart1, #enter{
+      color: gray;
+      background-color: #fff;
+      padding: 10px;
+      display: block;
+      width: 85px;
+      margin: 0 auto;
+      margin-top: 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+    } 
+
+    #enter{
+      width: 185px;
+    }
+
+    #change{
+      color: #1fa0e4;
+    }
+
+    input{
+      color: gray!important;
+    }
+
+    #loading {
+      height: 100%;
+      width: 100%;
+      background-color:rgba(0,0,0,0.8);
+      z-index: 999;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+</style>
+
   <body>
-
+    <div id="loading" style="display:none">
+      <h1 style="margin-top:250px;">Hang tight, we're preparing your WUMBO!</h1>
+    </div>
     <div class="site-wrapper">
-
       <div class="site-wrapper-inner">
 
         <div class="cover-container">
@@ -34,26 +84,83 @@
               </ul>
             </div>
           </div>
-          <style>
-body {
-		background-color: #f4d451;
-	}
-	</style>
-          <div class="inner cover">
-          	<img src="/images/3.png" alt="logo">
-	<div class="screendata">
-		<h1>Choose two Twitter handles your WUMBO will focus on</h1>
+<div class="inner cover">
+  <img src="/images/3.png" alt="logo">
 
+	<div class="screendata">
 			 	<form action ='/wumbo' method="post">
-			 	<br><h2>@</h2><input id="inputText" type="text"  background-color = #00000 name="user1"></input></br>
-			 	<h2>&</h2>
-			 	<br><h2>@</h2><input id="inputText" type="text" background-color = #00000 name="user2"></input></br>
-				<br><button id="enter">Next</button></br>
-			</form>
+
+          <!-- this is part 1 of the form, which is shown initially-->
+          <div id="part1">
+            <h1>Choose two Twitter handles your WUMBO will focus on</h1>          
+    			 	<h2>@</h2><input type="text" background-color: #f4d451 name="user1" id="user1"></input>
+    			 	<h2>&</h2>
+    			 	<h2>@</h2><input type="text" background-color: #f4d451 name="user2" id="user2"></input>
+            <br>
+            <a href="#" id="submitPart1">Next</a>
+          </div>
+          <!-- this is part 1 of the form, which is shown initially-->
+
+          <!-- this is part 2 of the form, which is hidden initially, but changed to be 
+          shown once user completes part 1 and presses NEXT. See Jquery hide/show-->
+          <div id="part2" style="display:none"> 
+
+             <div id = 'narrtitle'>
+              <h2>Choose a theme your WUMBO will bring to life!</h2>
+              <p>Our 2 Twitter handles are <span id="handle1"></span> and <span id="handle2"></span>. <a href="#" id="change">Change these?</a><p>
+            </div>
+            <div id='cssmenu'>
+              <ul>
+                 <li class='active has-sub'><a href='#' id="sports"><span>Sports</span></a>
+                    <ul>
+                       <li><a href='#'><span>Chase for Rings</span></a></li>
+                    </ul>
+                   
+                    <li class='active has-sub'><a href='#' id="movies"><span>Movies</span></a>
+                    <ul> 
+                       <li><a href='#'><span>Quest for the Crystal Skull</span></a></li></ul>
+                    
+                    <li class='active has-sub'><a href='#' id="games"><span>Games</span></a>
+                          <ul>
+                             <li><a href='#'><span>Mario Party</span></a></li></ul>
+                   
+                    <li class='active has-sub'><a href='#' id="justice"><span>Justice</span></a>
+                    <ul>
+                        <li><a href='#'><span>There will be Justice!</span></a></li></ul>
+                       </li>
+
+                    <li class='has-sub'><a href='#' id="sponsored"><span>Sponsored</span></a>
+                          <ul>
+                             <li><a href='#'><span>Tinder</span></a></li>
+                             <li><a href='#'><span>Game of Thrones</span></a></li>
+                          </ul>
+                       </li>
+                    </ul>
+                 </li>
+              </ul>
+            </div>
+          
+            <!-- this menu is never shown to the user; it is hidden, with the values being changed by JQuery-->
+            <select id="narrative" name="narrative" style="display:none">
+                <option value="sports">Sports</option>
+                <option value="movies">Movies</option>
+                <option value="games">Games</option>
+                <option value="justice">Justice</option>
+                <option value="sponsored">Sponsored</option>
+            </select>  
+            <!-- this menu is never shown to the user; it is hidden, with the values being changed by JQuery-->
+
+          </div>
+          <!-- this is part 2 of the form, which is hidden initially, but changed to be 
+          shown once user completes part 1 and presses NEXT. See Jquery hide/show-->
+
+  				<br>
+<!--           <button id="enter" style="display:none">Show me my WUMBO!</button></br>-->			
+      </form>
 		<hr>
 	</div>
-            </p>
-          </div>
+
+</div>
 
         </div>
 
@@ -67,5 +174,76 @@ body {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/docs.min.js"></script>
+    <script>
+
+    /* ==================================================
+    Narrative Dropdown - We're changing the value of the narrative based on what the user clicks
+    ================================================== */
+
+    // first thing, we need to do a hide/show for part 1 and part 2 of the form
+    // when the user complets part 1, clicks a button, and part 1 is hidden and part 2 is shown
+
+    //variables to show the 2 handles
+
+    var handle1;
+    var handle2;
+
+    jQuery("#submitPart1").click(function(){
+
+      handle1 = jQuery("#user1").val();
+      handle2 = jQuery("#user2").val();
+
+      jQuery("#handle1").text(handle1);
+      jQuery("#handle2").text(handle2);
+
+      jQuery("#part1").hide();
+      jQuery("#part2").show();
+      jQuery("#enter").show();
+    });
+
+    // if the user wants to change the handles on step 2, they can go back. This is that function.
+    jQuery("#change").click(function(){
+      jQuery("#part2").hide();
+      jQuery("#enter").hide();
+      jQuery("#part1").show();
+    });
+
+    // this is the function that changes the value of the selection to what the user selects in the menu
+    // the values will be posted with the rest of the form
+      jQuery("#sports").click(function () {
+        jQuery("#narrative").val('sports');
+        jQuery("#loading").show();
+        //submit the form with jQuery     
+        jQuery("form").submit();        
+       });
+
+      jQuery("#movies").click(function () {
+        jQuery("#narrative").val('movies');
+        jQuery("#loading").show();
+        //submit the form with jQuery     
+        jQuery("form").submit();         
+       });
+
+      jQuery("#games").click(function () {
+        jQuery("#narrative").val('games');
+        jQuery("#loading").show();
+        //submit the form with jQuery     
+        jQuery("form").submit();         
+       });
+
+      jQuery("#justice").click(function () {
+        jQuery("#narrative").val('justice');
+        jQuery("#loading").show();
+        //submit the form with jQuery     
+        jQuery("form").submit();         
+       });
+
+      jQuery("#sponsored").click(function () {
+        jQuery("#narrative").val('sponsored');
+        jQuery("#loading").show();
+        //submit the form with jQuery     
+        jQuery("form").submit();         
+       });
+    </script>
   </body>
 </html>
