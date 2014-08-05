@@ -6,7 +6,7 @@
 a,
 a:focus,
 a:hover {
-  color: #fff;
+/*color: #fff;*/
 }
 
 /* Custom default button */
@@ -15,8 +15,8 @@ a:hover {
 .btn-default:focus {
   color: #333;
   text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
+  /*background-color: #fff;*/
+  /*border: 1px solid #fff;*/
 }
 
 
@@ -83,21 +83,21 @@ body {
   padding-left: 0;
   font-size: 16px;
   font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
+  /*color: #fff;  IE8 proofing */
+  /*color: rgba(255,255,255,.75);*/
   border-bottom: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
-  border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255,255,255,.25);
+  /*border-bottom-color: #a9a9a9;*/
+  /*border-bottom-color: rgba(255,255,255,.25);*/
 }
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
+  /*color: #fff;*/
+  /*border-bottom-color: #fff;*/
 }
 
 @media (min-width: 768px) {
@@ -126,11 +126,10 @@ body {
 /*
  * Footer
  */
-
-.mastfoot {
-  color: #999; /* IE8 proofing */
+/*.mastfoot {
+  color: #999;  IE8 proofing 
   color: rgba(255,255,255,.5);
-}
+}*/
 
 
 /*
@@ -143,10 +142,10 @@ body {
     position: fixed;
     top: 0;
   }
-  .mastfoot {
+  /*.mastfoot {
     position: fixed;
     bottom: 0;
-  }
+  }*/
   /* Start the vertical centering */
   .site-wrapper-inner {
     vertical-align: middle;

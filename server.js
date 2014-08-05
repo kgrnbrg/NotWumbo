@@ -144,6 +144,16 @@ app.get('/sports', function(req, res) {
     console.log("sports");
     res.render('sports.html');
 });
+app.get('/export', function(req, res) {
+    console.log("export");
+    res.render('export.html');
+});
+
+app.get('/share', function(req, res) {
+    console.log("share");
+    res.render('share.html');
+});
+
 app.get('/justice', function(req, res) {
     console.log("justice");
     res.render('data.html');
