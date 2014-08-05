@@ -69,7 +69,7 @@
       left: 0;
     }
 </style>
-
+ 
   <body>
     <div id="loading" style="display:none">
       <h1 style="margin-top:250px;">Hang tight, we're preparing your WUMBO!</h1>
@@ -93,9 +93,9 @@
           <!-- this is part 1 of the form, which is shown initially-->
           <div id="part1">
             <h1>Choose two Twitter handles your WUMBO will focus on</h1>          
-    			 	<h2>@</h2><input type="text" background-color: #f4d451 name="user1" id="user1"></input>
+    			 	<font size="6">@</font><input type="text" background-color: #f4d451 name="user1" id="user1"></input>
     			 	<h2>&</h2>
-    			 	<h2>@</h2><input type="text" background-color: #f4d451 name="user2" id="user2"></input>
+    			 	<font size="6">@</font><input type="text" background-color: #f4d451 name="user2" id="user2"></input>
             <br>
             <a href="#" id="submitPart1">Next</a>
           </div>
@@ -112,28 +112,17 @@
             <div id='cssmenu'>
               <ul>
                  <li class='active has-sub'><a href='#' id="sports"><span>Sports</span></a>
-                    <ul>
-                       <li><a href='#'><span>Chase for Rings</span></a></li>
-                    </ul>
                    
                     <li class='active has-sub'><a href='#' id="movies"><span>Movies</span></a>
-                    <ul> 
-                       <li><a href='#'><span>Quest for the Crystal Skull</span></a></li></ul>
                     
                     <li class='active has-sub'><a href='#' id="games"><span>Games</span></a>
-                          <ul>
-                             <li><a href='#'><span>Mario Party</span></a></li></ul>
+                      
                    
                     <li class='active has-sub'><a href='#' id="justice"><span>Justice</span></a>
-                    <ul>
-                        <li><a href='#'><span>There will be Justice!</span></a></li></ul>
-                       </li>
+                    
 
                     <li class='has-sub'><a href='#' id="sponsored"><span>Sponsored</span></a>
-                          <ul>
-                             <li><a href='#'><span>Tinder</span></a></li>
-                             <li><a href='#'><span>Game of Thrones</span></a></li>
-                          </ul>
+                          
                        </li>
                     </ul>
                  </li>
@@ -142,7 +131,7 @@
           
             <!-- this menu is never shown to the user; it is hidden, with the values being changed by JQuery-->
             <select id="narrative" name="narrative" style="display:none">
-                <option value="sports">Sports</option>
+                <div class="sports"><option value="sports">Sports</option></div>
                 <option value="movies">Movies</option>
                 <option value="games">Games</option>
                 <option value="justice">Justice</option>
@@ -151,8 +140,7 @@
             <!-- this menu is never shown to the user; it is hidden, with the values being changed by JQuery-->
 
           </div>
-          <!-- this is part 2 of the form, which is hidden initially, but changed to be 
-          shown once user completes part 1 and presses NEXT. See Jquery hide/show-->
+          <!-- this is part 2 of the form, which is hidden initially, but changed to be shown once user completes part 1 and presses NEXT. See Jquery hide/show-->
 
   				<br>
 <!--           <button id="enter" style="display:none">Show me my WUMBO!</button></br>-->			

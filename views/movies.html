@@ -30,11 +30,6 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <!-- <h3 class="masthead-brand">WUMBO</h3> -->
-              <!-- ul class="nav masthead-nav">
-                <li class="active"><a href="/index.html">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li> -->
               </ul>
             </div>
           </div>
@@ -45,15 +40,22 @@ body {
 	</style>
 	<div class="screendata">
           <div class="inner cover">
+          	
           	<img src="/images/wumbomov.png" alt="logo">
             <h1 class="cover-heading">Hey there! <br>Here's your WUMBO in all it's glory</br></h1>
             <h1>Movies</h1>
             <p class="lead">
-			Ancient <b>{{user1.location}}</b> is where we find our hero, <b>{{user1.screenName}}</b>, in search of the crystal skull. Battling the jungle elements, relentless <b>#GuardiansOfTheGalaxy</b>, and unforgiving <b>#Ebola</b>, along with sidekick, <b>{{user2.screenName}}</b>, on their quest for <b>{{user1.tweet1}}</b>. Never in all their <b>{{user1.followerCount}}</b> adventures, would a map lead them to an evil like <b>{{user2.tweet2}}</b>.
+            <img src= "{{user1.userProfileImage}}">
+          	<img src= "{{user2.userProfileImage}}">
+
+    Ancient <b>{{user1.location}}</b> is where we find our heroes, <b>{{user1.screenName}}</b> and <b>{{user2.screenName}}</b>, in search of the truth that, <b>{{user1.tweet1}}</b>. Battling the jungle elements, relentless <b>#Ebola</b>, and unforgiving <b>#5sospresale</b>, their quest for <b>{{user2.tweet1}}</b> had only begun. 
 
            </p>
             <p class="lead">
               <a href="/share" class="btn btn-lg btn-default">Share</a>
+            </p>
+            <p class ="lead">
+            	<a href="/wumbo" class="btn btn-lg btn-default">ReWumbo</a>
             </p>
             <p class="lead">
               <a href="/start" class="btn btn-lg btn-default">Restart</a>

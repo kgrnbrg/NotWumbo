@@ -287,6 +287,10 @@ app.post('/wumbo', function(req, res) {
     function returnData(counter) {
         if (counter == numberOfFunctions) {
             console.log("we have all the data we need! rendering html!");
+            function trimTweets(twitterData){
+            var str = "RT";
+            alert(str.trim());
+          }
 
             // render the HTML based on the narrative
             if (req.body.narrative == "sports") res.render('sports.html', twitterData);

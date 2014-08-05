@@ -20,7 +20,7 @@
   position: relative;
 }
 #sports{
-  color:ed9d3e;
+  background:ed9d3e;
 }
 #cssmenu {
   width: 400px;
@@ -111,6 +111,7 @@
   border-top-color: inherit;
   border-left-color: inherit;
 }
+
 #cssmenu ul ul li a {
   cursor: pointer;
   border-bottom: 1px solid #32373e;
