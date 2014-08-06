@@ -1,5 +1,5 @@
 module.exports = {
-    'HOSTPATH': 'http://localhost:3000',
+    'HOSTPATH': 'http://www.wumbo.co:3000',
     'PORT': 3000,
     'EXPRESS_SESSION_SECRET': '123456',
     'TWITTER_CONSUMER_KEY': 'Ya3bYM1H0DEa7ywx22Qx2QlHH',
