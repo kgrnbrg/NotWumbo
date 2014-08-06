@@ -135,7 +135,9 @@ body {
 /*
  * Affix and center
  */
-
+#movnarr{
+color:#ea623d;
+}
 @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
