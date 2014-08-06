@@ -159,6 +159,11 @@ app.get('/justice', function(req, res) {
     res.render('data.html');
 });
 
+app.get('/sponsored', function(req, res) {
+    console.log("beats");
+    res.render('beats.html');
+});
+
 app.get('/anarr', function(req, res) {
     console.log("justice");
     res.render('anarr.html');
@@ -213,11 +218,13 @@ app.post('/wumbo', function(req, res) {
             function(err, data) {
                 if (err) {
                     console.log("error getting showUser. Twitter error >> " + err);
+                res.render('error.html');
                 }
                 
                 // now add the returned data to the object for that user
                 twitterData[id]['location'] = data[0].location;
                 twitterData[id]['followerCount'] = data[0].followers_count;
+                twitterData[id]['picture'] = data[0].profile_image_url;
                 counter++;
                 returnData(counter); // check to see if we render html yet
             
@@ -229,6 +236,7 @@ app.post('/wumbo', function(req, res) {
             function(err, userTweets) {
                 if (err) {
                     console.log("error getting userTweets. Twitter error >> " + err);
+                res.render('error.html');
                 }
             
                 //let's pull out a random tweet
@@ -268,6 +276,7 @@ app.post('/wumbo', function(req, res) {
             function(err, friendIds) {
                 if (err) {
                     console.log("error getting friend IDs. Twitter error >>  " + err);
+                 res.render('error.html');
                 }
                 //let's pull out a random friend
                 //need a random number between 0 and the friendIds.length
@@ -283,7 +292,7 @@ app.post('/wumbo', function(req, res) {
                         counter++;
                         returnData(counter); // check to see if we render html yet
                     })
-            
+
 
         // twit.getTrendsNew(function (err, data) {
         //         if (err) {
@@ -308,8 +317,8 @@ app.post('/wumbo', function(req, res) {
             else if (req.body.narrative == "movies") res.render('movies.html', twitterData);
             else if (req.body.narrative == "games") res.render('videogames.html', twitterData);
             else if (req.body.narrative == "justice") res.render('data.html', twitterData);
-            else if (req.body.narrative == "sponsored") res.render('data.html', twitterData);
-            else res.render('data.html', twitterData);
+            else if (req.body.narrative == "sponsored") res.render('beats.html', twitterData);
+            else res.render('beats.html', twitterData);
         } else {
             console.log("not all functions have returned yet; waiting still...");
             console.log("counter is " + counter);

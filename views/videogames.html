@@ -104,14 +104,18 @@ body {
 body {
 		background-color: #5dc8d3;
 	}
+	h2 {text-align: left}
 	</style>
 		<div class="screendata">
           <div class="inner cover">
-          	<img src="/images/wumbovg.png" alt="logo">
+          	<br><img src="/images/wumbovg.png" alt="logo">
+          	<img src="{{user1.picture}}" style="border-radius:45px;" height="100" width="100">
+          	<img src="{{user2.picture}}"style="border-radius:45px;" height="100" width="100"></b>
             <h1 class="cover-heading">Hey there! <br> Here's your WUMBO in all its glory</br></h1>
-            <h1>Videogames</h1>
+            <h2>Videogames</h2>
             <p class="lead">
-			Ingesting mushrooms, collecting coins, and <b>{{user1.tweet1}}</b>, the carpenter turned plumber, Super <b>{{user1.screenName}}</b> would introduce us to <b>{{user1.tweet1}}</b>. In a kingdom cursed, Princess <b>{{user2.screenName}}</b> had been kidnapped! Seven times our hero would <b>{{user1.tweet2}}</b>, only to hear, Thank you, <b>{{user1.tweet1}}</b>! But <b>{{user2.tweet1}}</b>!
+            	<h2>
+			Eating mushrooms and collecting coins, Super <b>{{user1.screenName}}</b> was powered by thumbs. Blowing in tapes was more frustrating than <b>#LilKim<b>! We found ourselves screaming {{user1.tweet1}}</b> at the TV, but it was all worth it to save Princess <b>{{user2.screenName}}</b>.</h2>
            </p>
             <p class="lead">
               <a href="/share" class="btn btn-lg btn-default">Share</a>
