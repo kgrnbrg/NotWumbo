@@ -268,7 +268,6 @@ app.post('/wumbo', function(req, res) {
             function(err, friendIds) {
                 if (err) {
                     console.log("error getting friend IDs. Twitter error >>  " + err);
-                    res.render('error.html');
                 }
                 //let's pull out a random friend
                 //need a random number between 0 and the friendIds.length

@@ -38,7 +38,7 @@ body {
 
 @font-face{
   font-family: 'Gotham-Light';
-  src: url ('/css/Gotham-Light.otf');
+  src: url ('/css/Gotham-Light.otf') format ('otf');
 }
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
@@ -135,9 +135,7 @@ body {
 /*
  * Affix and center
  */
-#movnarr{
-color:#ea623d;
-}
+
 @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
