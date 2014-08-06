@@ -234,7 +234,7 @@ app.post('/wumbo', function(req, res) {
                 var ran = getRanNum(userTweets.length, 0);
                 var tweet = userTweets[ran].text;
                 //now, add that tweet to the data object of that user
-                twitterData[id]['tweet1'] = tweet;
+                twitterData[id]['tweet1'] = sanitizeText(tweet);
 
                 //now, get another one, but make sure it's not the same as the first
                 var ran2 = getRanNum(userTweets.length, 0);
@@ -244,7 +244,7 @@ app.post('/wumbo', function(req, res) {
                 else {
                     var tweet2 = userTweets[ran2].text;
                     //now, add that tweet to the data object of that user
-                    twitterData[id]['tweet2'] = tweet2;
+                    twitterData[id]['tweet1'] = sanitizeText(tweet);
                 }
 
                 function getRanNum(max, min) {
@@ -255,7 +255,7 @@ app.post('/wumbo', function(req, res) {
                     if (num1 == num2) return true;
                     else return false;
                 }
-
+                function sanitizeText(str) { return (str.replace(/(https?:\/\/[^\s]+)/g, '')).replace(/RT\s?/g, ''); }
 
                 counter++;
                 returnData(counter); // check to see if we render html yet
