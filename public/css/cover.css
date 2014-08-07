@@ -19,7 +19,11 @@ a:hover {
   /*border: 1px solid #fff;*/
 }
 
+#light{
+font-family: "museo-sans";
+font-weight: 50; 
 
+}
 /*
  * Base structure
  */
@@ -31,14 +35,14 @@ body {
 }
 body {
   color: #fff;
-  font-family: 'Gotham-Light';
+  /*font-family: 'Gotham-Light';*/
   text-align: center;
  /* text-shadow: 0 1px 3px rgba(0,0,0,.5);*/
 }
 
 @font-face{
   font-family: 'Gotham-Light';
-  src: url ('/css/Gotham-Light.otf') format ('otf');
+  src: url ('/css/Gotham-Light.otf') format ('');
 }
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {

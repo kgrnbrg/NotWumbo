@@ -1,71 +1,5 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<title>WUMBO</title>
- <link rel="stylesheet" type="text/css" href="style.css"/>
- <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-<style>
-body {
-		background-color: #b7ce59;
-	}
-	</style>
- <body>
 
-
-	<div class="screendata">
-
-		<h1>Your Wumbo</h1>
-		<h2>Enter Two New Handles to Wumbo again</h2>
-
-			 	<form action ='/wumbo' method="post">
-				 	<input id="inputText" type="text" name="user1" required></input>
-				 	<input id="inputText" type="text" name="user2" required></input>
-					<button id="enter">Wumbo again</button>
-				</form>
-			
-			<form action ='/wumbo/' method="post" visibility="hidden">
-				 	<input id="inputText" type="text" name="user1" value='{{{user1.screeName}}}' required></input>
-				 	<input id="inputText" type="text" name="user2" value='{{{user2.screeName}}}' required></input>
-					<button id="enter">ReWumbo</button>
-				</form>				
-		<hr>
-	
-		<p>
-			In the largest debate since <b>{{user1.tweet1}}</b>, <b>{{user2.screenName}}</b> was denied <b>#Thor</b> by the supreme <b>{{user1.screenName}}</b> based on <b>{{user2.tweet1}}</b>. Viewers were outraged, but according to <b>{{user1.friend}}</b>, arguing at <b>{{user2.location}}</b> means <b>{{user1.tweet2}}</b>. There's <b>{{user1.followerCount}}</b> sides to story, but that day they all learned <b>{{user2.tweet2}}</b>.
-		</p>
-		<h1>Screen Names</h1>
-		<h5>We have data for {{user1.screenName}} and {{user2.screenName}}!</h1>
-
-		<hr>
-
-		<h1>Some Data</h1>
-	     <h5>{{user1.screenName}}'s location is {{user1.location}} and their follower count is {{user1.followerCount}}</h5>
-	     <h5>{{user2.screenName}}'s location is {{user2.location}} and their follower count is {{user2.followerCount}}</h5>
-		<hr>
- 
-		<h1>Tweets</h1>
-	     <h5>The tweet1 for {{user1.screenName}}! >> {{user1.tweet1}}</h5>
-	     <h5>The tweet1 for {{user2.screenName}}! >> {{user2.tweet1}}</h5>
-
-	     <h5>The tweet2 for {{user1.screenName}}! >> {{user1.tweet2}}</h5>
-	     <h5>The tweet2 for {{user2.screenName}}! >> {{user2.tweet2}}</h5>
-		<hr>
-
-		<h1>Friends</h1>
-	     <h5>{{user1.screenName}}'s friend is {{user1.friend}}, who has a screen name of {{user1.friendScreenName}}</h5>
-	     <h5>{{user2.screenName}}'s friend is {{user2.friend}}, who has a screen name of {{user2.friendScreenName}}</h5>
-
-		<hr>		
-
-	</div>
-
-
- </body>
- </html>
- -->
-
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -84,6 +18,9 @@ body {
 
     <!-- Custom styles for this template -->
     <link href="/css/cover.css" rel="stylesheet">
+
+    <script type="text/javascript" src="//use.typekit.net/bdd7khb.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
   </head>
 
@@ -119,7 +56,7 @@ body {
             <h1 class="cover-heading">Hey there! <br>Here's your WUMBO in all its glory</br></h1>
             <h2>Justice</h2>
             <p class="lead">
-			<h2>In the largest debate since <b>{{user1.tweet1}}</b>, <b>{{user2.screenName}}</b> was sentenced to death by <b>#Thor</b>. Viewers were outraged, but President <b>{{user1.screenName}}</b>, pardoned the convict on account that <b>{{user2.tweet1}}</b>. The <b>#EBOLA</b> Times headline read <b>{{user2.tweet2}}</b>.</h2>
+			<h2>In the largest debate since <b><font color="#5b7ad3">{{user1.tweet1}}</font></b>, <b><font color="#5b7ad3">{{user2.screenName}}</font></b> was sentenced to death by <b><font color="#5b7ad3">#Thor</font></b>. Viewers were outraged, but President <b><font color="#5b7ad3">{{user1.screenName}}</font></b>, pardoned the convict on account that <b><font color="#5b7ad3">{{user2.tweet1}}</font></b>. The <b><font color="#5b7ad3">#EBOLA</font></b> Times headline read <b><font color="#5b7ad3">{{user2.tweet2}}</font></b></h2>
 
            </p>
             <p class="lead">

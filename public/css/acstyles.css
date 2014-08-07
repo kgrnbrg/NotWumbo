@@ -9,7 +9,7 @@
   line-height: 2;
   display: block;
   position: relative;
-  left:6.9%;
+  left:-9.9%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -22,38 +22,44 @@
 #sports{
   color:#ffffff;
   background:#ed9d3e;
-  height:38px;
-  font-size: 18px;
+  height:80px;
+  width:1028px;
+  font-size: 34px;
   letter-spacing:2px
+
 }
 #movies{
   color:#ffffff;
   background:#ea623d;
-  height:38px;
-  font-size: 18px;
+  height:80px;
+  width:1028px;
+  font-size: 34px;
   letter-spacing:2px
 }
 
 #games{
   color:#ffffff;
   background:#5dc8d3;
-  height:38px;
-  font-size:18px;
+  height:80px;
+  width:1028px;
+  font-size:34px;
   letter-spacing:2px
 }
 
 #justice{
   color:#ffffff;
   background:#b7ce59;
-  height:38px;
-  font-size: 18px;
+  height:80px;
+  width:1028px;
+  font-size: 34px;
   letter-spacing:2px
 }
 #sponsored{
   color:#ffffff;
-  background:#ed9d3e;
-  height:38px;
-  font-size: 18px;
+  background:#7e78b5;
+  height:80px;
+  width:1028px;
+  font-size: 34px;
   letter-spacing:2px
 }
 
@@ -121,7 +127,7 @@
   display: block;
   position: absolute;
   content: "";
-  width: 6px;
+  width: 10px;
   height: 6px;
   right: 20px;
   z-index: 10;
@@ -193,7 +199,7 @@
   position: absolute;
   content: "";
   width: 5px;
-  height: 5px;
+  height: 510px;
   right: 15px;
   z-index: 10;
   top: 11.5px;
