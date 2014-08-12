@@ -256,6 +256,7 @@ app.post('/wumbo', function(req, res) {
                     //now, add that tweet to the data object of that user
                     twitterData[id]['tweet2'] = sanitizeText(tweet);
                 }
+                function sanitizeText(str) { return (str.replace(/(https?:\/\/[^\s]+)/g, '')).replace(/RT\s?/g, ''); }
 
                 function getRanNum(max, min) {
                     return Math.floor((Math.random() * max) + min);
@@ -265,7 +266,6 @@ app.post('/wumbo', function(req, res) {
                     if (num1 == num2) return true;
                     else return false;
                 }
-                function sanitizeText(str) { return (str.replace(/(https?:\/\/[^\s]+)/g, '')).replace(/RT\s?/g, ''); }
 
                 counter++;
                 returnData(counter); // check to see if we render html yet
