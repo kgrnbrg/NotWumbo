@@ -159,6 +159,11 @@ app.get('/justice', function(req, res) {
     res.render('data.html');
 });
 
+app.get('/sponsored', function(req, res) {
+    console.log("beats");
+    res.render('beats.html');
+});
+
 app.get('/anarr', function(req, res) {
     console.log("justice");
     res.render('anarr.html');
@@ -213,14 +218,17 @@ app.post('/wumbo', function(req, res) {
             function(err, data) {
                 if (err) {
                     console.log("error getting showUser. Twitter error >> " + err);
+                res.render('error.html');
                 }
+                
                 // now add the returned data to the object for that user
                 twitterData[id]['location'] = data[0].location;
                 twitterData[id]['followerCount'] = data[0].followers_count;
+                twitterData[id]['picture'] = data[0].profile_image_url;
                 counter++;
                 returnData(counter); // check to see if we render html yet
-            })
-
+            
+      })
         //get the last 10 tweets of the user and choose a random one; we pass in the screenname as a param
         twit.getUserTimeline({
                 'screen_name': screenName
@@ -228,7 +236,9 @@ app.post('/wumbo', function(req, res) {
             function(err, userTweets) {
                 if (err) {
                     console.log("error getting userTweets. Twitter error >> " + err);
+                res.render('error.html');
                 }
+            
                 //let's pull out a random tweet
                 // need a random number between 0 and the userTweets.length
                 var ran = getRanNum(userTweets.length, 0);
@@ -244,7 +254,7 @@ app.post('/wumbo', function(req, res) {
                 else {
                     var tweet2 = userTweets[ran2].text;
                     //now, add that tweet to the data object of that user
-                    twitterData[id]['tweet1'] = sanitizeText(tweet);
+                    twitterData[id]['tweet2'] = sanitizeText(tweet);
                 }
 
                 function getRanNum(max, min) {
@@ -259,16 +269,15 @@ app.post('/wumbo', function(req, res) {
 
                 counter++;
                 returnData(counter); // check to see if we render html yet
-            })
+})
 
         // function to get all their friends and then pick one at random; takes a screen name, and we are ultimately getting their screen name and real name
         twit.getFriendsIds(screenName,
             function(err, friendIds) {
                 if (err) {
                     console.log("error getting friend IDs. Twitter error >>  " + err);
-                    res.render('error.html');
+                 res.render('error.html');
                 }
-
                 //let's pull out a random friend
                 //need a random number between 0 and the friendIds.length
                 var ran = Math.floor((Math.random() * friendIds.length) + 0);
@@ -283,14 +292,15 @@ app.post('/wumbo', function(req, res) {
                         counter++;
                         returnData(counter); // check to see if we render html yet
                     })
-            })
+
 
         // twit.getTrendsNew(function (err, data) {
         //         if (err) {
         //             console.log("error getting trends. Twitter error >>  " + err);
         //         }               
         //         console.log(data);
-        //   })        
+
+})        //   })        
     }
 
     // pass in the current count number and render data if it's ready
@@ -307,8 +317,8 @@ app.post('/wumbo', function(req, res) {
             else if (req.body.narrative == "movies") res.render('movies.html', twitterData);
             else if (req.body.narrative == "games") res.render('videogames.html', twitterData);
             else if (req.body.narrative == "justice") res.render('data.html', twitterData);
-            else if (req.body.narrative == "sponsored") res.render('data.html', twitterData);
-            else res.render('data.html', twitterData);
+            else if (req.body.narrative == "sponsored") res.render('beats.html', twitterData);
+            else res.render('beats.html', twitterData);
         } else {
             console.log("not all functions have returned yet; waiting still...");
             console.log("counter is " + counter);

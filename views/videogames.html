@@ -1,66 +1,4 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<title>WUMBO</title>
- <link rel="stylesheet" type="text/css" href="style.css"/>
- <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-<style>
-body {
-		background-color: #f4d451;
-	}
-	</style>
- <body>
-
-
-	<div class="screendata">
-
-		<h1>Your Wumbo</h1>
-		<h2>Enter Two New Handles to Wumbo again</h2>
-
-			 	<form action ='/vg' method="post">
-				 	<input id="inputText" type="text" name="user1" required></input>
-				 	<input id="inputText" type="text" name="user2" required></input>
-					<button id="enter">Enter</button>
-				</form>
-		<hr>
-	
-		<p>
-
-			Ingesting mushrooms, collecting coins, and <b>{{user1.tweet1}}</b>, the carpenter turned plumber, Super <b>{{user1.screenName}}</b> would introduce us to <b>{{user1.tweet1}}</b>. In a kingdom cursed, Princess <b>{{user2.screenName}}</b> had been kidnapped! Seven times our hero would <b>{{user1.tweet2}}</b>, only to hear, Thank you, <b>{{user1.tweet1}}</b>! But <b>{{user2.tweet1}}</b>!
-
-
-		</p>
-		<h1>Screen Names</h1>
-		<h5>We have data for {{user1.screenName}} and {{user2.screenName}}!</h1>
-
-		<hr>
-
-		<h1>Some Data</h1>
-	     <h5>{{user1.screenName}}'s location is {{user1.location}} and their follower count is {{user1.followerCount}}</h5>
-	     <h5>{{user2.screenName}}'s location is {{user2.location}} and their follower count is {{user2.followerCount}}</h5>
-		<hr>
- 
-		<h1>Tweets</h1>
-	     <h5>The tweet1 for {{user1.screenName}}! >> {{user1.tweet1}}</h5>
-	     <h5>The tweet1 for {{user2.screenName}}! >> {{user2.tweet1}}</h5>
-
-	     <h5>The tweet2 for {{user1.screenName}}! >> {{user1.tweet2}}</h5>
-	     <h5>The tweet2 for {{user2.screenName}}! >> {{user2.tweet2}}</h5>
-		<hr>
-
-		<h1>Friends</h1>
-	     <h5>{{user1.screenName}}'s friend is {{user1.friend}}, who has a screen name of {{user1.friendScreenName}}</h5>
-	     <h5>{{user2.screenName}}'s friend is {{user2.friend}}, who has a screen name of {{user2.friendScreenName}}</h5>
-
-		<hr>		
-
-	</div>
-
-
- </body>
- </html> -->
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -80,6 +18,9 @@ body {
     <!-- Custom styles for this template -->
     <link href="/css/cover.css" rel="stylesheet">
 
+    <script type="text/javascript" src="//use.typekit.net/bdd7khb.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
   </head>
 
   <body>
@@ -92,32 +33,31 @@ body {
 
           <div class="masthead clearfix">
             <div class="inner">
-              <!-- <h3 class="masthead-brand">WUMBO</h3> -->
-              <!-- ul class="nav masthead-nav">
-                <li class="active"><a href="/index.html">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li> -->
-              </ul>
+             
             </div>
           </div>
           <style>
 body {
 		background-color: #5dc8d3;
 	}
+	h2 {text-align: left}
 	</style>
 		<div class="screendata">
           <div class="inner cover">
-          	<img src="/images/wumbovg.png" alt="logo">
-            <h1 class="cover-heading">Hey there! <br> Here's your WUMBO in all it's glory</br></h1>
-            <h1>Videogames</h1>
+          	<img src="/images/wumbovg.png" alt="logo"><br>
+          	<img src="{{user1.picture}}" style="border-radius:45px;" height="100" width="100">
+          	<img src="{{user2.picture}}"style="border-radius:45px;" height="100" width="100"></br>
+            <h1 class="cover-heading">Hey there! <br> Here's your WUMBO in all its glory</br></h1>
+            <h2>Videogames</h2>
             <p class="lead">
-			Ingesting mushrooms, collecting coins, and <b>{{user1.tweet1}}</b>, the carpenter turned plumber, Super <b>{{user1.screenName}}</b> would introduce us to <b>{{user1.tweet1}}</b>. In a kingdom cursed, Princess <b>{{user2.screenName}}</b> had been kidnapped! Seven times our hero would <b>{{user1.tweet2}}</b>, only to hear, Thank you, <b>{{user1.tweet1}}</b>! But <b>{{user2.tweet1}}</b>!
+            	<h2>
+			Eating mushrooms and collecting coins, Super <b><font color="#ed9d3e">{{user1.screenName}}</font></b> was powered by thumbs. Blowing in tapes was more frustrating than <b><font color="#ed9d3e">#GregOden</font></b>! We found ourselves screaming <b><font color="#ed9d3e">{{user1.tweet1}}</font></b> at the TV, but it was all worth it to save Princess <b><font color="#ed9d3e">{{user2.screenName}}</font></b>.</h2>
            </p>
             <p class="lead">
-              <a href="/share" class="btn btn-lg btn-default">Share</a>
+              <a href="/share"><img src="/images/blueshare.png"></a>
             </p>
             <p class="lead">
-              <a href="/start" class="btn btn-lg btn-default">Restart</a>
+              <a href="/start"><img src="/images/bluerest.png"></a>
             </p>
           </div>
           </div>
