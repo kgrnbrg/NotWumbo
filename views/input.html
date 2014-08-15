@@ -12,7 +12,8 @@
    <script type="text/javascript" src="//use.typekit.net/bdd7khb.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/cover.css" rel="stylesheet"> 
+     <link href="/css/cover.css" rel="stylesheet">
+    <!-- <link href="/node_modules/bootstrap/docs/examples/cover/cover.css" rel="stylesheet"> -->
     <link rel="icon" href="../../favicon.ico">
 
     <title>Wumbo</title>
@@ -111,24 +112,33 @@
               <br>
             </br>
             </div>
-            <div id='cssmenu'>
-              <ul>
-                 <div class='sports'><li class='active has-sub'><a href='#' id="sports"><span>Sports</span></a></div>
-                   
-                 <div class='movies'><li class='active has-sub'><a href='#' id="movies"><span>Movies</span></a></div>
-                    
-                 <div class='games'><li class='active has-sub'><a href='#' id="games"><span>Games</span></a></div>
-                      
-                   
-                 <div class='justice'><li class='active has-sub'><a href='#' id="justice"><span>Justice</span></a></div>
-                    
-
-                 <div class='sponsored'><li class='has-sub'><a href='#' id="sponsored"><span>Sponsored</span></a>
-                          
-                       </li>
-                    </ul>
-                 </li>
-              </ul>
+            <div id="buttonContainer">
+      <div class="button" id="sportsbutton">
+        <a href="#" id="sports">
+          <span>Sports</span>
+        </a>
+      </div>
+      <div class="button" id="moviesbutton">
+        <a href="#" id="movies">
+          <span>Movies</span>
+        </a>
+      </div>
+      <div class="button" id="gamesbutton">
+        <a href="#" id="games">
+          <apan>Games</span>
+        </a>
+      </div>
+      <div class="button" id="justicebutton">
+        <a href="#" id="justice">
+          <span>Justice</span>
+        </a>
+      </div>
+      <div class="button" id="sponsoredbutton">
+        <a href="#" id="sponsored">
+          <span>Sponsored</span>
+        </a>
+      </div>
+    </div>
             </div>
           
             <!-- this menu is never shown to the user; it is hidden, with the values being changed by JQuery-->
@@ -161,8 +171,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/node_modules/bootstrap/docs/assets/js/docs.min.js"></script>
     <script>
 
     /* ==================================================
